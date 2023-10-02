@@ -11,6 +11,7 @@
     //arab szambol romai szam
     function arabToRoman(n){
       if(n==4) return 'IV';
+      if(n==5) return 'V';
       return 'I'.repeat(n);
     }
   
@@ -26,6 +27,9 @@
       });
       QUnit.test('negy', function(assert) {
         assert.equal(arabToRoman(4), 'IV');
+      });
+      QUnit.test('ot', function(assert) {
+        assert.equal(arabToRoman(5), 'V');
       });
       
     });
