@@ -8,14 +8,14 @@
   <div id="qunit-fixture"></div>
   <script src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script>
   <script>
-    //romai szam arab szamokka
-    function romanToArab(str){
-        
+    //arab szambol romai szam
+    function arabToRoman(n){
+        return 'I';
     }
   
-    QUnit.module('fizzbuzz teszt', function() {
+    QUnit.module('romanToArab teszt', function() {
       QUnit.test('egy', function(assert) {
-        assert.equal(fizzbuzz(1), '1');
+        assert.equal(arabToRoman(1), 'I');
       });
       
     });
