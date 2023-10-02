@@ -10,10 +10,13 @@
   <script>
     //arab szambol romai szam
     function arabToRoman(n){
-      if(n==4) return 'IV';
-      if(n==5) return 'V';
-      if(n==6) return 'VI';
-      return 'I'.repeat(n);
+      if(n<4){
+        return 'I'.repeat(n);
+      }else if(n==4){
+        return 'IV';
+      } else{
+        return 'V'+'I'.repeat(n-5);
+      }
     }
   
     QUnit.module('romanToArab teszt', function() {
@@ -34,6 +37,9 @@
       });
       QUnit.test('hat', function(assert) {
         assert.equal(arabToRoman(6), 'VI');
+      });
+      QUnit.test('het', function(assert) {
+        assert.equal(arabToRoman(7), 'VII');
       });
       
     });
