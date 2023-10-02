@@ -10,34 +10,17 @@
   <script>
     //arab szambol romai szam
     function arabToRoman(n){
+      list=[{szam: 1, szim: 'I'},{szam: 4, szim: 'IV'},{szam: 5, szim: 'V'}, {szam: 9, szim: 'IX'}, 
+      {szam: 10, szim: 'X'}, {szam: 40, szim: 'XL'}, {szam: 50, szim: 'L'}, 
+      {szam: 90, szim: 'XC'}, {szam: 100, szim: 'C'}, {szam: 400, szim: 'CD'}, 
+      {szam: 500, szim: 'D'}, {szam: 900, szim: 'CM'},{szam: 1000, szim: 'M'}];
       if(n==0) return '';
-      if(n<4){
-        return 'I'+arabToRoman(n-1);
-      }else if(n<5){
-        return 'IV'+arabToRoman(n-4);
-      }else if(n<9){
-        return 'V'+'I'.repeat(n-5);
-      }else if(n<10){
-        return 'IX'+arabToRoman(n-9);
-      }else if(n<40) {
-        return 'X'+arabToRoman(n-10);
-      }else if(n<50) {
-        return 'XL'+arabToRoman(n-40);
-      }else if(n<90){
-        return 'L'+arabToRoman(n-50);
-      }else if(n<100){
-        return 'XC'+arabToRoman(n-90);
-      }else if(n<400){
-        return 'C'+arabToRoman(n-100);
-      }else if(n<500){
-        return 'CD'+arabToRoman(n-400);
-      }else if(n<900){
-        return 'D'+arabToRoman(n-500);
-      }else if(n<1000){
-        return 'CM'+arabToRoman(n-900);
-      }else{
-        return 'M'+arabToRoman(n-1000);
+      for(i=1; i<list.length; i++){
+        if(n<list[i].szam){
+          return list[i-1].szim+arabToRoman(n-list[i-1].szam)
+        }
       }
+      return 'M'+arabToRoman(n-1000);
     }
   
     QUnit.module('romanToArab teszt', function() {
