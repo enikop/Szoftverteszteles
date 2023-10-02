@@ -16,8 +16,10 @@
         return 'IV';
       }else if(n<9){
         return 'V'+'I'.repeat(n-5);
-      }else{
+      }else if(n==9){
         return 'IX';
+      }else {
+        return 'X';
       }
     }
   
@@ -48,6 +50,9 @@
       });
       QUnit.test('kilenc', function(assert) {
         assert.equal(arabToRoman(9), 'IX');
+      });
+      QUnit.test('tiz', function(assert) {
+        assert.equal(arabToRoman(10), 'X');
       });
       
     });
