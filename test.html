@@ -14,8 +14,10 @@
         return 'I'.repeat(n);
       }else if(n==4){
         return 'IV';
-      } else{
+      }else if(n<9){
         return 'V'+'I'.repeat(n-5);
+      }else{
+        return 'IX';
       }
     }
   
@@ -40,6 +42,12 @@
       });
       QUnit.test('het', function(assert) {
         assert.equal(arabToRoman(7), 'VII');
+      });
+      QUnit.test('nyolc', function(assert) {
+        assert.equal(arabToRoman(8), 'VIII');
+      });
+      QUnit.test('kilenc', function(assert) {
+        assert.equal(arabToRoman(9), 'IX');
       });
       
     });
