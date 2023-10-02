@@ -33,8 +33,11 @@
         return 'CD'+arabToRoman(n-400);
       }else if(n<900){
         return 'D'+arabToRoman(n-500);
+      }else if(n<1000){
+        return 'CM'+arabToRoman(n-900);
+      }else{
+        return 'M'+arabToRoman(n-1000);
       }
-      else if(n==1000) return 'M';
     }
   
     QUnit.module('romanToArab teszt', function() {
@@ -104,8 +107,14 @@
       QUnit.test('nyolcszazhat', function(assert) {
         assert.equal(arabToRoman(806), 'DCCCVI');
       });
+      QUnit.test('kilencszazharminc', function(assert) {
+        assert.equal(arabToRoman(930), 'CMXXX');
+      });
       QUnit.test('ezer', function(assert) {
         assert.equal(arabToRoman(1000), 'M');
+      });
+      QUnit.test('negyezerhuszonegy', function(assert) {
+        assert.equal(arabToRoman(4021), 'MMMMXXI');
       });
       
     });
