@@ -18,8 +18,10 @@
         return 'V'+'I'.repeat(n-5);
       }else if(n==9){
         return 'IX';
-      }else {
+      }else if(n==10) {
         return 'X';
+      }else {
+        return 'X'+arabToRoman(n-10);
       }
     }
   
@@ -53,6 +55,12 @@
       });
       QUnit.test('tiz', function(assert) {
         assert.equal(arabToRoman(10), 'X');
+      });
+      QUnit.test('tizenegy', function(assert) {
+        assert.equal(arabToRoman(11), 'XI');
+      });
+      QUnit.test('tizenkilenc', function(assert) {
+        assert.equal(arabToRoman(19), 'XIX');
       });
       
     });
