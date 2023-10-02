@@ -29,6 +29,8 @@
         return 'XC'+arabToRoman(n-90);
       }else if(n<400){
         return 'C'+arabToRoman(n-100);
+      }else if(n<500){
+        return 'CD'+arabToRoman(n-400);
       }else if(n==500) return 'D';
       else if(n==1000) return 'M';
     }
@@ -90,6 +92,9 @@
       });
       QUnit.test('haromszazhatvanegy', function(assert) {
         assert.equal(arabToRoman(361), 'CCCLXI');
+      });
+      QUnit.test('negyszazhuszonketto', function(assert) {
+        assert.equal(arabToRoman(422), 'CDXXII');
       });
       QUnit.test('otszaz', function(assert) {
         assert.equal(arabToRoman(500), 'D');
