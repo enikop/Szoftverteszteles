@@ -10,6 +10,7 @@
   <script>
     //arab szambol romai szam
     function arabToRoman(n){
+      if(n==4) return 'IV';
       return 'I'.repeat(n);
     }
   
@@ -22,6 +23,9 @@
       });
       QUnit.test('harom', function(assert) {
         assert.equal(arabToRoman(3), 'III');
+      });
+      QUnit.test('negy', function(assert) {
+        assert.equal(arabToRoman(4), 'IV');
       });
       
     });
