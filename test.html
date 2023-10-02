@@ -30,6 +30,8 @@
         return 'L';
       }else if(n<90){
         return 'L'+arabToRoman(n-50);
+      }else if(n==90){
+        return 'XC';
       }else if(n==100){
         return 'C';
       }else if(n==500){
@@ -84,6 +86,9 @@
       });
       QUnit.test('nyolcvannyolc', function(assert) {
         assert.equal(arabToRoman(88), 'LXXXVIII');
+      });
+      QUnit.test('kilencven', function(assert) {
+        assert.equal(arabToRoman(90), 'XC');
       });
       QUnit.test('szaz', function(assert) {
         assert.equal(arabToRoman(100), 'C');
