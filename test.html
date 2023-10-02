@@ -31,7 +31,9 @@
         return 'C'+arabToRoman(n-100);
       }else if(n<500){
         return 'CD'+arabToRoman(n-400);
-      }else if(n==500) return 'D';
+      }else if(n<900){
+        return 'D'+arabToRoman(n-500);
+      }
       else if(n==1000) return 'M';
     }
   
@@ -98,6 +100,9 @@
       });
       QUnit.test('otszaz', function(assert) {
         assert.equal(arabToRoman(500), 'D');
+      });
+      QUnit.test('nyolcszazhat', function(assert) {
+        assert.equal(arabToRoman(806), 'DCCCVI');
       });
       QUnit.test('ezer', function(assert) {
         assert.equal(arabToRoman(1000), 'M');
