@@ -10,6 +10,7 @@
   <script>
     //arab szambol romai szam
     function arabToRoman(n){
+      if(n==0) return '';
       if(n<4){
         return 'I'.repeat(n);
       }else if(n==4){
@@ -18,20 +19,12 @@
         return 'V'+'I'.repeat(n-5);
       }else if(n==9){
         return 'IX';
-      }else if(n==10) {
-        return 'X';
       }else if(n<40) {
         return 'X'+arabToRoman(n-10);
-      }else if(n==40) {
-        return 'XL';
       }else if(n<50) {
         return 'XL'+arabToRoman(n-40);
-      }else if(n==50) {
-        return 'L';
       }else if(n<90){
         return 'L'+arabToRoman(n-50);
-      }else if(n==90){
-        return 'XC';
       }else if(n<100){
         return 'XC'+arabToRoman(n-90);
       }else if(n==100){
