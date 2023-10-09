@@ -62,6 +62,9 @@
       QUnit.test('Y irányba negatív túllépés', function(assert) {
         assert.deepEqual(mozogTerkepen([4,1], 'E', 'b', 4), [4,1]);
       });
+      QUnit.test('Nincs túllépés', function(assert) {
+        assert.deepEqual(mozogTerkepen([4,2], 'E', 'b', 4), [4,1]);
+      });
     });
 
     QUnit.module('Fordul teszt', function() {
