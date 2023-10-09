@@ -16,7 +16,7 @@
         if(nezesi_irany == 'N' && utasitas =='b' || nezesi_irany == 'S' && utasitas =='f'){
             return [kezdo[0]+1, kezdo[1]]
         }
-        if(nezesi_irany == 'E' && utasitas =='f'){
+        if(nezesi_irany == 'E' && utasitas =='f' || nezesi_irany == 'W' && utasitas =='b'){
             return [kezdo[0], kezdo[1]+1]
         }
     }
@@ -36,6 +36,9 @@
       });
       QUnit.test('Kelet és előre', function(assert) {
         assert.deepEqual(lep([2,4],'E','f'), [2,5]);
+      });
+      QUnit.test('Nyugat és hátra', function(assert) {
+        assert.deepEqual(lep([2,4],'W','b'), [2,5]);
       });
       
     });
