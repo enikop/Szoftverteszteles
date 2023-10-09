@@ -66,6 +66,18 @@
         return output
     }
 
+    //térképen _ a még nem ismert, x az akadály, o a tiszta
+    function frissitTerkep(pont, akadaly, terkep){
+      terkep[pont[0]-1][pont[1]-1] = akadaly ? 'x':'o';
+      return terkep
+    }
+
+    QUnit.module('Térkép frissítés teszt', function() {
+      QUnit.test('Nincs akadály', function(assert) {
+        assert.deepEqual(frissitTerkep([1,2], false, [['_', '_'],['_', '_']]), [['_', 'o'],['_', '_']]);
+      });
+    });
+
     QUnit.module('Akadály teszt', function() {
       QUnit.test('Nincs akadály', function(assert) {
         assert.equal(vanAkadaly([3,4], [[1,1], [4,8], [2,3]]), false);
