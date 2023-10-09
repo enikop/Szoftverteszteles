@@ -76,6 +76,9 @@
       QUnit.test('Nincs akadály', function(assert) {
         assert.deepEqual(frissitTerkep([1,2], false, [['_', '_'],['_', '_']]), [['_', 'o'],['_', '_']]);
       });
+      QUnit.test('Van akadály', function(assert) {
+        assert.deepEqual(frissitTerkep([1,2], true, [['_', '_'],['_', '_']]), [['_', 'x'],['_', '_']]);
+      });
     });
 
     QUnit.module('Akadály teszt', function() {
