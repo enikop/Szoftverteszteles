@@ -39,7 +39,7 @@
         }
         return output
     }
-    //térkép mindig n x n-es
+
     function mozogTerkepen(kezdo, nezesi_irany, utasitas, terkep_dim){
         veg = lep(kezdo, nezesi_irany, utasitas)
         if(veg[0] > terkep_dim){
@@ -69,26 +69,8 @@
     //térképen _ a még nem ismert, x az akadály, o a tiszta
     function frissitTerkep(pont, akadaly, terkep){
       terkep[pont[0]-1][pont[1]-1] = akadaly ? 'x':'o';
-      console.log(terkep)
       return terkep
     }
-
-    function sorVegigJar(kezdo, nezesi_irany, terkep, akadalylista){
-      for(i=0; i<terkep.length; i++){
-        kezdo = mozogTerkepen(kezdo, nezesi_irany, 'f', terkep.length)
-        terkep = frissitTerkep(kezdo, vanAkadaly(kezdo, akadalylista), terkep)
-      }
-      return terkep
-    }
-
-    QUnit.module('Sor végigjárás teszt', function() {
-      QUnit.test('Nincs akadály', function(assert) {
-        akadalylista = []
-        kezdo_terkep = [['_','_', '_'],['_','_', '_'],['_','_', '_']]
-        veg_terkep = [['_','o', '_'],['_','o', '_'],['_','o', '_']]
-        assert.deepEqual(sorVegigJar([1,2], 'N', kezdo_terkep,akadalylista), veg_terkep);
-      });
-    });
 
     QUnit.module('Térkép frissítés teszt', function() {
       QUnit.test('Nincs akadály', function(assert) {
