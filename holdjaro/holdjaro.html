@@ -31,11 +31,14 @@
         if(nezesi_irany=='N' && utasitas == 'r' || nezesi_irany=='S' && utasitas == 'l'){
             output = 'E'
         }
-        if(nezesi_irany=='S' && utasitas == 'r' || nezesi_irany=='N' && utasitas == 'l'){
+        else if(nezesi_irany=='S' && utasitas == 'r' || nezesi_irany=='N' && utasitas == 'l'){
             output = 'W'
         }
-        if(nezesi_irany=='E' && utasitas == 'r' || nezesi_irany=='W' && utasitas == 'l'){
+        else if(nezesi_irany=='E' && utasitas == 'r' || nezesi_irany=='W' && utasitas == 'l'){
             output = 'S'
+        }
+        else if(nezesi_irany=='E' && utasitas == 'l' || nezesi_irany=='W' && utasitas == 'r'){
+            output = 'N'
         }
         return output
     }
@@ -57,6 +60,12 @@
       });
       QUnit.test('Kelet és jobbra', function(assert) {
         assert.equal(fordul('E','r'), 'S');
+      });
+      QUnit.test('Nyugat és jobbra', function(assert) {
+        assert.equal(fordul('W','r'), 'N');
+      });
+      QUnit.test('Kelet és balra', function(assert) {
+        assert.equal(fordul('E','l'), 'N');
       });
     });
     QUnit.module('Lép teszt', function() {
