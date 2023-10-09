@@ -10,21 +10,23 @@
   <script>
     
     function lep(kezdo, nezesi_irany, utasitas){
+        veg = [-1,-1]
         if(nezesi_irany == 'N' && utasitas =='f' || nezesi_irany == 'S' && utasitas =='b'){
-            return [kezdo[0]-1, kezdo[1]]
+            veg = [kezdo[0]-1, kezdo[1]]
         }
-        if(nezesi_irany == 'N' && utasitas =='b' || nezesi_irany == 'S' && utasitas =='f'){
-            return [kezdo[0]+1, kezdo[1]]
+        else if(nezesi_irany == 'N' && utasitas =='b' || nezesi_irany == 'S' && utasitas =='f'){
+            veg = [kezdo[0]+1, kezdo[1]]
         }
-        if(nezesi_irany == 'E' && utasitas =='f' || nezesi_irany == 'W' && utasitas =='b'){
-            return [kezdo[0], kezdo[1]+1]
+        else if(nezesi_irany == 'E' && utasitas =='f' || nezesi_irany == 'W' && utasitas =='b'){
+            veg = [kezdo[0], kezdo[1]+1]
         }
-        if(nezesi_irany == 'E' && utasitas =='b' || nezesi_irany == 'W' && utasitas =='f'){
-            return [kezdo[0], kezdo[1]-1]
+        else if(nezesi_irany == 'E' && utasitas =='b' || nezesi_irany == 'W' && utasitas =='f'){
+            veg = [kezdo[0], kezdo[1]-1]
         }
+        return veg
     }
   
-    QUnit.module('Lep teszt', function() {
+    QUnit.module('Lép teszt', function() {
       QUnit.test('Észak és előre', function(assert) {
         assert.deepEqual(lep([2,4],'N','f'), [1,4]);
       });
@@ -48,6 +50,9 @@
       });
       QUnit.test('Nyugat és előre', function(assert) {
         assert.deepEqual(lep([2,4],'W','f'), [2,3]);
+      });
+      QUnit.test('Érvénytelen irány', function(assert) {
+        assert.deepEqual(lep([2,4],'W','l'), [-1,-1]);
       });
       
     });
