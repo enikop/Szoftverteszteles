@@ -87,6 +87,10 @@
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       akadaly = vanAkadaly(jelenlegi, akadalylista)
       frissitTerkep(jelenlegi, akadaly, terkep)
+      jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
+      jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
+      akadaly = vanAkadaly(jelenlegi, akadalylista)
+      terkep = frissitTerkep(jelenlegi, akadaly, terkep)
     }
 
     QUnit.module('Felfedezés teszt', function() {
@@ -117,6 +121,13 @@
         //vart_terkep=[['_','x', '_', '_'],['_','o', 'o', '_'],['_','o', '_', '_'],['_','_', '_', '_']]
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
         assert.deepEqual(kezdeti_terkep[1][2], 'o');
+      });
+      QUnit.test('Balra szomszédom felfedezése', function(assert) {
+        akadalyok=[[1,2]]
+        kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
+        //vart_terkep=[['_','x', '_', '_'],['o','o', 'o', '_'],['_','o', '_', '_'],['_','_', '_', '_']]
+        felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
+        assert.deepEqual(kezdeti_terkep[1][0], 'o');
       });
     });
 
