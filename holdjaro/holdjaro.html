@@ -44,14 +44,12 @@
         veg = lep(kezdo, nezesi_irany, utasitas)
         if(veg[0] > terkep_dim){
           veg[0]=1
-        }
-        if(veg[0] < 1 ){
+        }else if(veg[0] < 1 ){
           veg[0]=terkep_dim
         }
         if(veg[1] > terkep_dim){
           veg[1]=1
-        }
-        if(veg[1] < 1){
+        }else if(veg[1] < 1){
           veg[1]=terkep_dim
         }
         return veg
