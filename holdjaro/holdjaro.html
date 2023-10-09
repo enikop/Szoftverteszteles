@@ -11,37 +11,49 @@
     
     function lep(kezdo, nezesi_irany, utasitas){
         veg = kezdo
-        if(nezesi_irany == 'N' && utasitas =='f' || nezesi_irany == 'S' && utasitas =='b'){
+        if((nezesi_irany == 'N' && utasitas =='f') || (nezesi_irany == 'S' && utasitas =='b')){
             veg = [kezdo[0]-1, kezdo[1]]
-        }
-        else if(nezesi_irany == 'N' && utasitas =='b' || nezesi_irany == 'S' && utasitas =='f'){
+        } else if((nezesi_irany == 'N' && utasitas =='b') || (nezesi_irany == 'S' && utasitas =='f')){
             veg = [kezdo[0]+1, kezdo[1]]
-        }
-        else if(nezesi_irany == 'E' && utasitas =='f' || nezesi_irany == 'W' && utasitas =='b'){
+        } else if((nezesi_irany == 'E' && utasitas =='f') || (nezesi_irany == 'W' && utasitas =='b')){
             veg = [kezdo[0], kezdo[1]+1]
-        }
-        else if(nezesi_irany == 'E' && utasitas =='b' || nezesi_irany == 'W' && utasitas =='f'){
+        } else if((nezesi_irany == 'E' && utasitas =='b') || (nezesi_irany == 'W' && utasitas =='f')){
             veg = [kezdo[0], kezdo[1]-1]
         }
-        return kezdo
+        return veg
     }
 
     function fordul(nezesi_irany, utasitas){
         output = nezesi_irany
-        if(nezesi_irany=='N' && utasitas == 'r' || nezesi_irany=='S' && utasitas == 'l'){
+        if((nezesi_irany=='N' && utasitas == 'r') || (nezesi_irany=='S' && utasitas == 'l')){
             output = 'E'
         }
-        else if(nezesi_irany=='S' && utasitas == 'r' || nezesi_irany=='N' && utasitas == 'l'){
+        else if((nezesi_irany=='S' && utasitas == 'r') || (nezesi_irany=='N' && utasitas == 'l')){
             output = 'W'
         }
-        else if(nezesi_irany=='E' && utasitas == 'r' || nezesi_irany=='W' && utasitas == 'l'){
+        else if((nezesi_irany=='E' && utasitas == 'r') || (nezesi_irany=='W' && utasitas == 'l')){
             output = 'S'
         }
-        else if(nezesi_irany=='E' && utasitas == 'l' || nezesi_irany=='W' && utasitas == 'r'){
+        else if((nezesi_irany=='E' && utasitas == 'l') || (nezesi_irany=='W' && utasitas == 'r')){
             output = 'N'
         }
         return output
     }
+
+    function mozogTerkepen(kezdo, nezesi_irany, utasitas, terkep_dim){
+        veg = lep(kezdo, nezesi_irany, utasitas)
+        console.log(veg)
+        if(veg[0] > terkep_dim){
+            return kezdo
+        }
+    }
+
+    QUnit.module('Térképen mozgás teszt', function() {
+      QUnit.test('X irányba pozitív túllépés', function(assert) {
+        assert.deepEqual(mozogTerkepen([4,4], 'N', 'b', 4), [4,4]);
+      });
+    });
+
     QUnit.module('Fordul teszt', function() {
       QUnit.test('Észak és jobbra', function(assert) {
         assert.equal(fordul('N','r'), 'E');
