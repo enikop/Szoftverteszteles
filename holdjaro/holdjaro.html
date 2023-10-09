@@ -71,6 +71,14 @@
       terkep[pont[0]-1][pont[1]-1] = akadaly ? 'x':'o';
     }
 
+    function felfedezPont(jelenlegi_pont, nezesi_irany, terkep, akadalylista){
+      akadaly = vanAkadaly(jelenlegi_pont, akadalylista)
+      if(terkep[jelenlegi_pont[0]-1][jelenlegi_pont[1]-1]=='_'){
+        frissitTerkep(jelenlegi_pont, akadaly, terkep)
+        if(!akadaly) [jelenlegi_pont, nezesi_irany]=felfedez(jelenlegi_pont, nezesi_irany, terkep, akadalylista)
+      }
+    }
+
     function felfedez(kezdo, nezesi_irany, terkep, akadalylista ){
       //magam
       jelenlegi=kezdo
@@ -78,36 +86,20 @@
       frissitTerkep(jelenlegi, akadaly, terkep)
       //elore szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
-      akadaly = vanAkadaly(jelenlegi, akadalylista)
-      if(terkep[jelenlegi[0]-1][jelenlegi[1]-1]=='_'){
-        frissitTerkep(jelenlegi, akadaly, terkep)
-        if(!akadaly) [jelenlegi, nezesi_irany]=felfedez(jelenlegi, nezesi_irany, terkep, akadalylista)
-      }
+      felfedezPont(jelenlegi, nezesi_irany, terkep, akadalylista)
       //hatra szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
-      akadaly = vanAkadaly(jelenlegi, akadalylista)
-      if(terkep[jelenlegi[0]-1][jelenlegi[1]-1]=='_'){
-        frissitTerkep(jelenlegi, akadaly, terkep)
-        if(!akadaly) [jelenlegi, nezesi_irany]=felfedez(jelenlegi, nezesi_irany, terkep, akadalylista)
-      }
+      felfedezPont(jelenlegi, nezesi_irany, terkep, akadalylista)
       //jobbra szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       nezesi_irany = fordul(nezesi_irany, 'r')
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
-      akadaly = vanAkadaly(jelenlegi, akadalylista)
-      if(terkep[jelenlegi[0]-1][jelenlegi[1]-1]=='_'){
-        frissitTerkep(jelenlegi, akadaly, terkep)
-        if(!akadaly) [jelenlegi, nezesi_irany]=felfedez(jelenlegi, nezesi_irany, terkep, akadalylista)
-      }
+      felfedezPont(jelenlegi, nezesi_irany, terkep, akadalylista)
       //balra szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
-      akadaly = vanAkadaly(jelenlegi, akadalylista)
-      if(terkep[jelenlegi[0]-1][jelenlegi[1]-1]=='_'){
-        frissitTerkep(jelenlegi, akadaly, terkep)
-        if(!akadaly) [jelenlegi, nezesi_irany]=felfedez(jelenlegi, nezesi_irany, terkep, akadalylista)
-      }
+      felfedezPont(jelenlegi, nezesi_irany, terkep, akadalylista)
       //vissza kezdo helyzetbe
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       nezesi_irany = fordul(nezesi_irany, 'l')
