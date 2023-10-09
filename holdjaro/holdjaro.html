@@ -72,25 +72,34 @@
     }
 
     function felfedez(kezdo, nezesi_irany, terkep, akadalylista ){
+      //magam
       jelenlegi=kezdo
       akadaly = vanAkadaly(jelenlegi, akadalylista)
       frissitTerkep(jelenlegi, akadaly, terkep)
+      //elore szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       akadaly = vanAkadaly(jelenlegi, akadalylista)
-      frissitTerkep(jelenlegi, akadaly, terkep)
+      if(terkep[jelenlegi[0]-1][jelenlegi[1]-1]=='_'){
+        frissitTerkep(jelenlegi, akadaly, terkep)
+        if(!akadaly) [jelenlegi, nezesi_irany]=felfedez(jelenlegi, nezesi_irany, terkep, akadalylista)
+      }
+      //hatra szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
       akadaly = vanAkadaly(jelenlegi, akadalylista)
       frissitTerkep(jelenlegi, akadaly, terkep)
+      //jobbra szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       nezesi_irany = fordul(nezesi_irany, 'r')
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       akadaly = vanAkadaly(jelenlegi, akadalylista)
       frissitTerkep(jelenlegi, akadaly, terkep)
+      //balra szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
       akadaly = vanAkadaly(jelenlegi, akadalylista)
       frissitTerkep(jelenlegi, akadaly, terkep)
+      //vissza kezdo helyzetbe
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       nezesi_irany = fordul(nezesi_irany, 'l')
       return [jelenlegi, nezesi_irany]
@@ -140,6 +149,20 @@
         veg_irany = res[1]
         assert.deepEqual(veg, [2,2]);
         assert.deepEqual(veg_irany, 'N')
+      });
+      QUnit.test('Előre szomszédom szomszédai ha nem akadály', function(assert) {
+        akadalyok=[[]]
+        kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
+        //vart_terkep=[['o','o', 'o', '_'],['o','o', 'o', '_'],['_','o', '_', '_'],['_','o', '_', '_']]
+        felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
+        assert.equal(kezdeti_terkep[0][0], 'o');
+      });
+      QUnit.test('Előre szomszédom szomszédai ha akadály', function(assert) {
+        akadalyok=[[1,2]]
+        kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
+        //vart_terkep=[['_','x', '_', '_'],['o','o', 'o', '_'],['_','o', '_', '_'],['_','_', '_', '_']]
+        felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
+        assert.equal(kezdeti_terkep[0][0], '_');
       });
     });
 
