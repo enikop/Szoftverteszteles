@@ -55,28 +55,7 @@
         return veg
     }
 
-    function mozogTerkepenAkadalyokkal(kezdo, nezesi_irany, utasitas, terkep_dim, akadalylista){
-        vegso = mozogTerkepen(kezdo, nezesi_irany, utasitas, terkep_dim)
-        for(let i=0; i<akadalylista.length; i++){
-          if(akadalylista[i][0]==vegso[0] && akadalylista[i][1]==vegso[1]){
-            vegso = kezdo;
-            break
-          }
-        }
-        return vegso
-    }
-
-    QUnit.module('Akadályos térképen mozgás teszt', function() {
-      QUnit.test('Akadály nélküli mezőre lépés átfordulás nélkül', function(assert) {
-        assert.deepEqual(mozogTerkepenAkadalyokkal([2,2], 'N', 'f', 4, [[1,1], [3,2]] ), [1,2]);
-      });
-      QUnit.test('Akadály nélküli mezőre lépés átfordulással', function(assert) {
-        assert.deepEqual(mozogTerkepenAkadalyokkal([1,2], 'N', 'f', 4, [[1,1], [3,2]] ), [4,2]);
-      });
-      QUnit.test('Akadály nélküli mezőre lépés átfordulás nélkül', function(assert) {
-        assert.deepEqual(mozogTerkepenAkadalyokkal([2,2], 'N', 'b', 4, [[1,1], [3,2]] ), [2,2]);
-      });
-    });
+    
 
     QUnit.module('Térképen mozgás teszt', function() {
       QUnit.test('X irányba pozitív túllépés', function(assert) {
