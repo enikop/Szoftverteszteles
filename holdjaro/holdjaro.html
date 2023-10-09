@@ -25,7 +25,17 @@
         }
         return veg
     }
-  
+
+    function fordul(nezesi_irany, utasitas){
+        if(nezesi_irany=='N' && utasitas == 'r'){
+            return 'E'
+        }
+    }
+    QUnit.module('Fordul teszt', function() {
+      QUnit.test('Észak és jobbra', function(assert) {
+        assert.equal(fordul('N','r'), 'E');
+      });
+    });
     QUnit.module('Lép teszt', function() {
       QUnit.test('Észak és előre', function(assert) {
         assert.deepEqual(lep([2,4],'N','f'), [1,4]);
