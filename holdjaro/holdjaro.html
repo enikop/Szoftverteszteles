@@ -99,35 +99,35 @@
         kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
         //vart_terkep=[['_','_', '_', '_'],['_','o', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
-        assert.deepEqual(kezdeti_terkep[1][1], 'o');
+        assert.equal(kezdeti_terkep[1][1], 'o');
       });
       QUnit.test('Előre szomszédom felfedezése', function(assert) {
         akadalyok=[[1,2]]
         kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
         //vart_terkep=[['_','x', '_', '_'],['_','o', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
-        assert.deepEqual(kezdeti_terkep[0][1], 'x');
+        assert.equal(kezdeti_terkep[0][1], 'x');
       });
       QUnit.test('Hátra szomszédom felfedezése', function(assert) {
         akadalyok=[[1,2]]
         kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
         //vart_terkep=[['_','x', '_', '_'],['_','o', '_', '_'],['_','o', '_', '_'],['_','_', '_', '_']]
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
-        assert.deepEqual(kezdeti_terkep[2][1], 'o');
+        assert.equal(kezdeti_terkep[2][1], 'o');
       });
       QUnit.test('Jobbra szomszédom felfedezése', function(assert) {
         akadalyok=[[1,2]]
         kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
         //vart_terkep=[['_','x', '_', '_'],['_','o', 'o', '_'],['_','o', '_', '_'],['_','_', '_', '_']]
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
-        assert.deepEqual(kezdeti_terkep[1][2], 'o');
+        assert.equal(kezdeti_terkep[1][2], 'o');
       });
       QUnit.test('Balra szomszédom felfedezése', function(assert) {
         akadalyok=[[1,2]]
         kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
         //vart_terkep=[['_','x', '_', '_'],['o','o', 'o', '_'],['_','o', '_', '_'],['_','_', '_', '_']]
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
-        assert.deepEqual(kezdeti_terkep[1][0], 'o');
+        assert.equal(kezdeti_terkep[1][0], 'o');
       });
     });
 
