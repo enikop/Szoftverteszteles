@@ -88,6 +88,12 @@
         veg_terkep = [['_','o', '_'],['_','o', '_'],['_','o', '_']]
         assert.deepEqual(sorVegigJar([1,2], 'N', kezdo_terkep,akadalylista), veg_terkep);
       });
+      QUnit.test('Van akadály, kerülni kell', function(assert) {
+        akadalylista = [[2,2]]
+        kezdo_terkep = [['_','_', '_'],['_','_', '_'],['_','_', '_']]
+        veg_terkep = [['_','o', 'o'],['_','x', 'o'],['_','o', 'o']]
+        assert.deepEqual(sorVegigJar([1,2], 'N', kezdo_terkep,akadalylista), veg_terkep);
+      });
     });
 
     QUnit.module('Térkép frissítés teszt', function() {
