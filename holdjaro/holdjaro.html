@@ -55,7 +55,15 @@
         return veg
     }
 
-    
+    function vanAkadaly(koordinata, akadalylista){
+      return false
+    }
+
+    QUnit.module('Akadály teszt', function() {
+      QUnit.test('Nincs akadály', function(assert) {
+        assert.equal(vanAkadaly([3,4], [[1,1], [4,8], [2,3]]), false);
+      });
+    });
 
     QUnit.module('Térképen mozgás teszt', function() {
       QUnit.test('X irányba pozitív túllépés', function(assert) {
