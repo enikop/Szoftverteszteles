@@ -69,16 +69,15 @@
     //térképen _ a még nem ismert, x az akadály, o a tiszta
     function frissitTerkep(pont, akadaly, terkep){
       terkep[pont[0]-1][pont[1]-1] = akadaly ? 'x':'o';
-      return terkep
     }
 
     function felfedez(kezdo, nezesi_irany, terkep, akadalylista ){
       jelenlegi=kezdo
       akadaly = vanAkadaly(jelenlegi, akadalylista)
-      terkep = frissitTerkep(jelenlegi, akadaly, terkep)
+      frissitTerkep(jelenlegi, akadaly, terkep)
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       akadaly = vanAkadaly(jelenlegi, akadalylista)
-      terkep = frissitTerkep(jelenlegi, akadaly, terkep)
+      frissitTerkep(jelenlegi, akadaly, terkep)
     }
 
     QUnit.module('Felfedezés teszt', function() {
@@ -100,10 +99,14 @@
 
     QUnit.module('Térkép frissítés teszt', function() {
       QUnit.test('Nincs akadály', function(assert) {
-        assert.deepEqual(frissitTerkep([1,2], false, [['_', '_'],['_', '_']]), [['_', 'o'],['_', '_']]);
+        terkep = [['_', '_'],['_', '_']]
+        frissitTerkep([1,2], false, terkep)
+        assert.deepEqual(terkep, [['_', 'o'],['_', '_']]);
       });
       QUnit.test('Van akadály', function(assert) {
-        assert.deepEqual(frissitTerkep([1,2], true, [['_', '_'],['_', '_']]), [['_', 'x'],['_', '_']]);
+        terkep = [['_', '_'],['_', '_']]
+        frissitTerkep([1,2], true, terkep)
+        assert.deepEqual(terkep, [['_', 'x'],['_', '_']]);
       });
     });
 
