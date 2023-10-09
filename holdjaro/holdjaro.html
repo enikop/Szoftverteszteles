@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Holdjáró</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.20.0.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script>
+  <script>
+    
+    function lep(kezdo, nezesi_irany, utasitas){
+        if(nezesi_irany == 'N' && utasitas =='f'){
+            return [kezdo[0]-1, kezdo[1]]
+        }
+    }
+  
+    QUnit.module('Lep teszt', function() {
+      QUnit.test('Észak és előre', function(assert) {
+        assert.deepEqual(lep([2,4],'N','f'), [1,4]);
+      });
+      
+    });
+  </script>
+</body>
