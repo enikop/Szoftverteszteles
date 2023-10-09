@@ -10,17 +10,11 @@
   <script>
     
     function lep(kezdo, nezesi_irany, utasitas){
-        if(nezesi_irany == 'N' && utasitas =='f'){
+        if(nezesi_irany == 'N' && utasitas =='f' || nezesi_irany == 'S' && utasitas =='b'){
             return [kezdo[0]-1, kezdo[1]]
         }
-        if(nezesi_irany == 'N' && utasitas =='b'){
+        if(nezesi_irany == 'N' && utasitas =='b' || nezesi_irany == 'S' && utasitas =='f'){
             return [kezdo[0]+1, kezdo[1]]
-        }
-        if(nezesi_irany == 'S' && utasitas =='f'){
-            return [kezdo[0]+1, kezdo[1]]
-        }
-        if(nezesi_irany == 'S' && utasitas =='b'){
-            return [kezdo[0]-1, kezdo[1]]
         }
     }
   
