@@ -56,12 +56,22 @@
     }
 
     function vanAkadaly(koordinata, akadalylista){
-      return false
+        output = false
+        for(let i=0; i<akadalylista.length; i++){
+          if(akadalylista[i][0]==koordinata[0] && akadalylista[i][1]==koordinata[1]){
+            output = true
+            break
+          }
+        }
+        return output
     }
 
     QUnit.module('Akadály teszt', function() {
       QUnit.test('Nincs akadály', function(assert) {
         assert.equal(vanAkadaly([3,4], [[1,1], [4,8], [2,3]]), false);
+      });
+      QUnit.test('Van akadály', function(assert) {
+        assert.equal(vanAkadaly([3,4], [[1,1], [4,8], [3,4]]), true);
       });
     });
 
