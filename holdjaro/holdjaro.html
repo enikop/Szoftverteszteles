@@ -43,14 +43,18 @@
     function mozogTerkepen(kezdo, nezesi_irany, utasitas, terkep_dim){
         veg = lep(kezdo, nezesi_irany, utasitas)
         console.log(veg)
-        if(veg[0] > terkep_dim){
+        if(veg[0] > terkep_dim || veg[0] < 1){
             return kezdo
         }
+        return veg
     }
 
     QUnit.module('Térképen mozgás teszt', function() {
       QUnit.test('X irányba pozitív túllépés', function(assert) {
         assert.deepEqual(mozogTerkepen([4,4], 'N', 'b', 4), [4,4]);
+      });
+      QUnit.test('X irányba negatív túllépés', function(assert) {
+        assert.deepEqual(mozogTerkepen([1,4], 'N', 'f', 4), [1,4]);
       });
     });
 
