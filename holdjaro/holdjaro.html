@@ -72,6 +72,22 @@
       return terkep
     }
 
+    function felfedez(kezdo, nezesi_irany, terkep, akadalylista ){
+      jelenlegi=kezdo
+      akadaly = vanAkadaly(jelenlegi, akadalylista)
+      terkep = frissitTerkep(jelenlegi, akadaly, terkep)
+    }
+
+    QUnit.module('Felfedezés teszt', function() {
+      QUnit.test('Magam felfedezése', function(assert) {
+        akadalyok=[[1,2]]
+        kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
+        //vart_terkep=[['_','_', '_', '_'],['_','o', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
+        felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
+        assert.deepEqual(kezdeti_terkep[1][1], 'o');
+      });
+    });
+
     QUnit.module('Térkép frissítés teszt', function() {
       QUnit.test('Nincs akadály', function(assert) {
         assert.deepEqual(frissitTerkep([1,2], false, [['_', '_'],['_', '_']]), [['_', 'o'],['_', '_']]);
