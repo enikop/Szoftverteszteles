@@ -66,15 +66,6 @@
         return output
     }
 
-    function mozogTerkepenAkadalyokkal(kezdo, nezesi_irany, utasitas, terkep_dim, akadalylista){
-      return mozogTerkepen(kezdo, nezesi_irany, utasitas, terkep_dim)
-    }
-    QUnit.module('Akadályos lépés térképen teszt', function() {
-      QUnit.test('Nincs akadály, nincs átfordulás', function(assert) {
-        assert.deepEqual(mozogTerkepenAkadalyokkal([2,4],'N','b', 8, [[1,1], [4,8], [2,3]]), [3,4]);
-      });
-    });
-
     QUnit.module('Akadály teszt', function() {
       QUnit.test('Nincs akadály', function(assert) {
         assert.equal(vanAkadaly([3,4], [[1,1], [4,8], [2,3]]), false);
