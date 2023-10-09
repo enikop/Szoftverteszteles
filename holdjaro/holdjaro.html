@@ -34,6 +34,9 @@
         if(nezesi_irany=='S' && utasitas == 'r' || nezesi_irany=='N' && utasitas == 'l'){
             output = 'W'
         }
+        if(nezesi_irany=='E' && utasitas == 'r' || nezesi_irany=='W' && utasitas == 'l'){
+            output = 'S'
+        }
         return output
     }
     QUnit.module('Fordul teszt', function() {
@@ -48,6 +51,12 @@
       });
       QUnit.test('Dél és jobbra', function(assert) {
         assert.equal(fordul('S','r'), 'W');
+      });
+      QUnit.test('Nyugat és balra', function(assert) {
+        assert.equal(fordul('W','l'), 'S');
+      });
+      QUnit.test('Kelet és jobbra', function(assert) {
+        assert.equal(fordul('E','r'), 'S');
       });
     });
     QUnit.module('Lép teszt', function() {
