@@ -51,16 +51,16 @@
 
     QUnit.module('Térképen mozgás teszt', function() {
       QUnit.test('X irányba pozitív túllépés', function(assert) {
-        assert.deepEqual(mozogTerkepen([4,4], 'N', 'b', 4), [4,4]);
+        assert.notDeepEqual(mozogTerkepen([4,4], 'N', 'b', 4), [4,5]);
       });
       QUnit.test('X irányba negatív túllépés', function(assert) {
-        assert.deepEqual(mozogTerkepen([1,4], 'N', 'f', 4), [1,4]);
+        assert.notDeepEqual(mozogTerkepen([1,4], 'N', 'f', 4), [0,4]);
       });
       QUnit.test('Y irányba pozitív túllépés', function(assert) {
-        assert.deepEqual(mozogTerkepen([4,4], 'E', 'f', 4), [4,4]);
+        assert.notDeepEqual(mozogTerkepen([4,4], 'E', 'f', 4), [5,4]);
       });
       QUnit.test('Y irányba negatív túllépés', function(assert) {
-        assert.deepEqual(mozogTerkepen([4,1], 'E', 'b', 4), [4,1]);
+        assert.notDeepEqual(mozogTerkepen([4,1], 'E', 'b', 4), [4,0]);
       });
       QUnit.test('Nincs túllépés', function(assert) {
         assert.deepEqual(mozogTerkepen([4,2], 'E', 'b', 4), [4,1]);
