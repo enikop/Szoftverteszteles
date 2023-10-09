@@ -46,7 +46,10 @@
         if(veg[0] > terkep_dim){
           veg[0]=1
         }
-        if(veg[0] < 1 || veg[1] > terkep_dim || veg[1] < 1){
+        if(veg[0] < 1 ){
+          veg[0]=terkep_dim
+        }
+        if(veg[1] > terkep_dim || veg[1] < 1){
             return kezdo
         }
         return veg
@@ -69,7 +72,10 @@
         assert.deepEqual(mozogTerkepen([4,2], 'E', 'b', 4), [4,1]);
       });
       QUnit.test('X irányba pozitív átfordulás', function(assert) {
-        assert.notDeepEqual(mozogTerkepen([4,4], 'N', 'b', 4), [4,1]);
+        assert.deepEqual(mozogTerkepen([4,4], 'N', 'b', 4), [1,4]);
+      });
+      QUnit.test('X irányba negatív átforulás', function(assert) {
+        assert.deepEqual(mozogTerkepen([1,4], 'N', 'f', 4), [4,4]);
       });
     });
 
