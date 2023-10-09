@@ -76,6 +76,9 @@
       jelenlegi=kezdo
       akadaly = vanAkadaly(jelenlegi, akadalylista)
       terkep = frissitTerkep(jelenlegi, akadaly, terkep)
+      jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
+      akadaly = vanAkadaly(jelenlegi, akadalylista)
+      terkep = frissitTerkep(jelenlegi, akadaly, terkep)
     }
 
     QUnit.module('Felfedezés teszt', function() {
@@ -85,6 +88,13 @@
         //vart_terkep=[['_','_', '_', '_'],['_','o', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
         assert.deepEqual(kezdeti_terkep[1][1], 'o');
+      });
+      QUnit.test('Előre szomszédom felfedezése', function(assert) {
+        akadalyok=[[1,2]]
+        kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
+        //vart_terkep=[['_','x', '_', '_'],['_','o', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
+        felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
+        assert.deepEqual(kezdeti_terkep[0][1], 'x');
       });
     });
 
