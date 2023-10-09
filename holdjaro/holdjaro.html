@@ -187,6 +187,20 @@
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
         assert.deepEqual(kezdeti_terkep, vart_terkep);
       });
+      QUnit.test('Teljes bejárás elérhetetlen pont', function(assert) {
+        akadalyok=[[1,2],[2,1],[2,3],[3,2],[4,4], [5,4]]
+        kezdeti_terkep = [['_','_', '_', '_', '_'],['_','_', '_', '_', '_'],['_','_', '_', '_', '_'],['_','_', '_', '_', '_'],['_','_', '_', '_', '_']]
+        vart_terkep = [['o','x', 'o', 'o', 'o'],['x','_', 'x', 'o', 'o'],['o','x', 'o', 'o', 'o'],['o','o', 'o', 'x', 'o'],['o','o', 'o', 'x', 'o']]
+        felfedez([1,1], 'N', kezdeti_terkep, akadalyok)
+        assert.deepEqual(kezdeti_terkep, vart_terkep);
+      });
+      QUnit.test('Teljes bejárás elérhetetlen a térkép nagyja', function(assert) {
+        akadalyok=[[1,2],[2,1],[2,3],[3,2],[4,4], [5,4]]
+        kezdeti_terkep = [['_','_', '_', '_', '_'],['_','_', '_', '_', '_'],['_','_', '_', '_', '_'],['_','_', '_', '_', '_'],['_','_', '_', '_', '_']]
+        vart_terkep = [['_','x', '_', '_', '_'],['x','o', 'x', '_', '_'],['_','x', '_', '_', '_'],['_','_', '_', '_', '_'],['_','_', '_', '_', '_']]
+        felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
+        assert.deepEqual(kezdeti_terkep, vart_terkep);
+      });
     });
 
     QUnit.module('Térkép frissítés teszt', function() {
