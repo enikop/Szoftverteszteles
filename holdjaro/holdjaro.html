@@ -19,6 +19,9 @@
         if(nezesi_irany == 'S' && utasitas =='f'){
             return [kezdo[0]+1, kezdo[1]]
         }
+        if(nezesi_irany == 'S' && utasitas =='b'){
+            return [kezdo[0]-1, kezdo[1]]
+        }
     }
   
     QUnit.module('Lep teszt', function() {
@@ -30,6 +33,9 @@
       });
       QUnit.test('Dél és előre', function(assert) {
         assert.deepEqual(lep([2,4],'S','f'), [3,4]);
+      });
+      QUnit.test('Dél és hátra', function(assert) {
+        assert.deepEqual(lep([2,4],'S','b'), [1,4]);
       });
       
     });
