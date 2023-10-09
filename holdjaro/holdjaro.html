@@ -42,28 +42,30 @@
 
     function mozogTerkepen(kezdo, nezesi_irany, utasitas, terkep_dim){
         veg = lep(kezdo, nezesi_irany, utasitas)
-        console.log(veg)
         if(veg[0] > terkep_dim){
           veg[0]=1
         }
         if(veg[0] < 1 ){
           veg[0]=terkep_dim
         }
-        if(veg[1] > terkep_dim || veg[1] < 1){
-            return kezdo
+        if(veg[1] > terkep_dim){
+          veg[1]=1
+        }
+        if(veg[1] < 1){
+          veg[1]=terkep_dim
         }
         return veg
     }
 
     QUnit.module('Térképen mozgás teszt', function() {
       QUnit.test('X irányba pozitív túllépés', function(assert) {
-        assert.notDeepEqual(mozogTerkepen([4,4], 'N', 'b', 4), [4,5]);
+        assert.notDeepEqual(mozogTerkepen([4,4], 'N', 'b', 4), [5,4]);
       });
       QUnit.test('X irányba negatív túllépés', function(assert) {
         assert.notDeepEqual(mozogTerkepen([1,4], 'N', 'f', 4), [0,4]);
       });
       QUnit.test('Y irányba pozitív túllépés', function(assert) {
-        assert.notDeepEqual(mozogTerkepen([4,4], 'E', 'f', 4), [5,4]);
+        assert.notDeepEqual(mozogTerkepen([4,4], 'E', 'f', 4), [4,5]);
       });
       QUnit.test('Y irányba negatív túllépés', function(assert) {
         assert.notDeepEqual(mozogTerkepen([4,1], 'E', 'b', 4), [4,0]);
@@ -76,6 +78,12 @@
       });
       QUnit.test('X irányba negatív átforulás', function(assert) {
         assert.deepEqual(mozogTerkepen([1,4], 'N', 'f', 4), [4,4]);
+      });
+      QUnit.test('Y irányba pozitív átfordulás', function(assert) {
+        assert.deepEqual(mozogTerkepen([4,4], 'E', 'f', 4), [4,1]);
+      });
+      QUnit.test('Y irányba negatív átforulás', function(assert) {
+        assert.deepEqual(mozogTerkepen([4,1], 'E', 'b', 4), [4,4]);
       });
     });
 
