@@ -10,7 +10,7 @@
   <script>
     
     function lep(kezdo, nezesi_irany, utasitas){
-        veg = [-1,-1]
+        veg = kezdo
         if(nezesi_irany == 'N' && utasitas =='f' || nezesi_irany == 'S' && utasitas =='b'){
             veg = [kezdo[0]-1, kezdo[1]]
         }
@@ -23,17 +23,22 @@
         else if(nezesi_irany == 'E' && utasitas =='b' || nezesi_irany == 'W' && utasitas =='f'){
             veg = [kezdo[0], kezdo[1]-1]
         }
-        return veg
+        return kezdo
     }
 
     function fordul(nezesi_irany, utasitas){
-        if(nezesi_irany=='N' && utasitas == 'r'){
-            return 'E'
+        output = nezesi_irany
+        if(nezesi_irany=='N' && utasitas == 'r' || nezesi_irany=='S' && utasitas == 'l'){
+            output = 'E'
         }
+        return output
     }
     QUnit.module('Fordul teszt', function() {
       QUnit.test('Észak és jobbra', function(assert) {
         assert.equal(fordul('N','r'), 'E');
+      });
+      QUnit.test('Dél és balra', function(assert) {
+        assert.equal(fordul('S','l'), 'E');
       });
     });
     QUnit.module('Lép teszt', function() {
@@ -62,7 +67,7 @@
         assert.deepEqual(lep([2,4],'W','f'), [2,3]);
       });
       QUnit.test('Érvénytelen irány', function(assert) {
-        assert.deepEqual(lep([2,4],'W','l'), [-1,-1]);
+        assert.deepEqual(lep([2,4],'W','l'), [2,4]);
       });
       
     });
