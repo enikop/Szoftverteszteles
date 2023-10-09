@@ -13,11 +13,17 @@
         if(nezesi_irany == 'N' && utasitas =='f'){
             return [kezdo[0]-1, kezdo[1]]
         }
+        if(nezesi_irany == 'N' && utasitas =='b'){
+            return [kezdo[0]+1, kezdo[1]]
+        }
     }
   
     QUnit.module('Lep teszt', function() {
       QUnit.test('Észak és előre', function(assert) {
         assert.deepEqual(lep([2,4],'N','f'), [1,4]);
+      });
+      QUnit.test('Észak és hátra', function(assert) {
+        assert.deepEqual(lep([2,4],'N','b'), [3,4]);
       });
       
     });
