@@ -87,7 +87,10 @@
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'b', terkep.length)
       akadaly = vanAkadaly(jelenlegi, akadalylista)
-      frissitTerkep(jelenlegi, akadaly, terkep)
+      if(terkep[jelenlegi[0]-1][jelenlegi[1]-1]=='_'){
+        frissitTerkep(jelenlegi, akadaly, terkep)
+        if(!akadaly) [jelenlegi, nezesi_irany]=felfedez(jelenlegi, nezesi_irany, terkep, akadalylista)
+      }
       //jobbra szomszed
       jelenlegi = mozogTerkepen(jelenlegi, nezesi_irany, 'f', terkep.length)
       nezesi_irany = fordul(nezesi_irany, 'r')
@@ -163,6 +166,13 @@
         //vart_terkep=[['_','x', '_', '_'],['o','o', 'o', '_'],['_','o', '_', '_'],['_','_', '_', '_']]
         felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
         assert.equal(kezdeti_terkep[0][0], '_');
+      });
+      QUnit.test('Hátra szomszédom szomszédai', function(assert) {
+        akadalyok=[[1,2]]
+        kezdeti_terkep = [['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_'],['_','_', '_', '_']]
+        //vart_terkep=[['_','x', '_', '_'],['o','o', 'o', '_'],['o','o', 'o', '_'],['_','o', '_', '_']]
+        felfedez([2,2], 'N', kezdeti_terkep, akadalyok)
+        assert.equal(kezdeti_terkep[2][0], 'o');
       });
     });
 
